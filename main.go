@@ -9,29 +9,26 @@ import (
 	"github.com/ofstudio/advice-wcs-life/advices"
 )
 
-//go:embed templates/index.tmpl
-var indexTmpl string
+//go:embed "templates"
+var templatesFS embed.FS
 
-//go:embed assets/*
-var assetsDir embed.FS
+//go:embed "assets"
+var assetsFS embed.FS
+
+var tmpl = template.Must(template.ParseFS(templatesFS, "templates/*.gohtml"))
+
+func handle(w http.ResponseWriter, r *http.Request) {
+	log.Printf("%s %s %s %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
+	err := tmpl.ExecuteTemplate(w, "index.gohtml", advices.GetAdvice())
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Print(err)
+	}
+}
 
 func main() {
-
-	var t, err = template.New("foo").Parse(indexTmpl)
-	if err != nil {
-		log.Panic("Error parsing template")
-	}
-
-	handler := func(w http.ResponseWriter, r *http.Request) {
-		a := advices.GetAdvice()
-		log.Printf("%s %s %s %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
-		w.WriteHeader(200)
-		w.Header().Add("Content-type", "text/html")
-		t.Execute(w, a)
-	}
-
-	http.HandleFunc("/", handler)
-	http.Handle("/assets/", http.FileServer(http.FS(assetsDir)))
+	http.HandleFunc("/", handle)
+	http.Handle("/assets/", http.FileServer(http.FS(assetsFS)))
 	log.Print("Listening on :8080")
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
