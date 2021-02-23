@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Совет от wcs.life</title>
+  <meta name="description" content="Совет дня для танцоров West Coast Swing" />
+  <link rel="shortcut icon" href="https://wcs.life/assets/img/meta/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+  <div class="page">
+    <div class="header">
+      <a href="/"><img src="/assets/logo-advice.svg" alt="Совет дня"></a>
+    </div>
+    <div class="advice">
+      <a href="/">
+        <div id="emoji">{{.Emoji}}</div>
+        <div id="content" class="animated">{{.Content}}</div>
+      </a>
+    </div>
+    <div class="footer">
+      <a href="https://t.me/wcslife">
+        <img id="logo-wcs-life" src="/assets/logo-wcs-life.svg" alt="wcs.life">
+      </a>
+      <a href="https://github.com/ofstudio/advice-wcs-life">
+        <img id="icon-github" src="/assets/icon-github.svg" alt="GitHub">
+      </a>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var animationStyles = ['rollIn', 'flipInY', 'fadeInUp', 'bounceInLeft', 'backInDown'];
+      var contentNode = document.getElementById('content');
+      contentNode.classList.add(animationStyles[Math.floor(Math.random() * animationStyles.length)]);
+    });
+  </script>
+</body>
+
+</html>

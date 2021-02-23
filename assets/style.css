@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #409beb;
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.advice {
+  flex-shrink: 3;
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+#emoji {
+  font-family: -apple-system, BlinkMacSystemFont, Calibri, "Segoe UI", Roboto,
+    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 64px;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+#content {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 900;
+  text-align: center;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 480px) {
+  #content {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+#icon-github,
+#logo-wcs-life {
+  display: block;
+  margin: 0 auto;
+}
+
+#logo-wcs-life {
+  opacity: 0.8;
+  padding-bottom: 16px;
+}
+
+#icon-github {
+  opacity: 0.65;
+}
+
+#icon-github:hover,
+#logo-wcs-life:hover {
+  opacity: 1;
+}
+
+/* 
+Animations 
+From https://github.com/animate-css/animate.css
+*/
+
+.animated {
+  animation-duration: 700ms;
+  animation-fill-mode: both;
+}
+
+@keyframes backInDown {
+  0% {
+    transform: translateY(-1200px) scale(0.7);
+    opacity: 0.7;
+  }
+  80% {
+    transform: translateY(0px) scale(0.7);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.backInDown {
+  animation-name: backInDown;
+}
+
+@keyframes bounceInLeft {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0) scaleX(3);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0) scaleX(1);
+  }
+  75% {
+    transform: translate3d(-10px, 0, 0) scaleX(0.98);
+  }
+  90% {
+    transform: translate3d(5px, 0, 0) scaleX(0.995);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.bounceInLeft {
+  animation-name: bounceInLeft;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+
+.flipInY {
+  backface-visibility: visible !important;
+  animation-name: flipInY;
+}
+
+@keyframes rollIn {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.rollIn {
+  animation-name: rollIn;
+}
