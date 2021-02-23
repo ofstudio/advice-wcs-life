@@ -19,6 +19,7 @@ var tmpl = template.Must(template.ParseFS(templatesFS, "templates/*.gohtml"))
 
 func handle(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s %s %s %s", r.RemoteAddr, r.Method, r.RequestURI, r.UserAgent())
+	w.Header().Set("Cache-Control", "no-cache, no-store")
 	err := tmpl.ExecuteTemplate(w, "index.gohtml", advices.GetAdvice())
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
