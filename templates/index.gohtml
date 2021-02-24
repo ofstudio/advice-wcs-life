@@ -31,11 +31,20 @@
       </a>
     </div>
   </div>
+  <script src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+    integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4"
+    crossorigin="anonymous"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var animationStyles = ['rollIn', 'flipInY', 'fadeInUp', 'bounceInLeft', 'backInDown'];
-      var contentNode = document.getElementById('content');
-      contentNode.classList.add(animationStyles[Math.floor(Math.random() * animationStyles.length)]);
+      function nativeEmoji() {
+        var p = navigator.platform || '';
+        if (p.indexOf('Mac') == 0) return true;
+        if (p.match(/iP(hone|ad|od)/)) return true;
+      }
+      var aniStyles = ['rollIn', 'flipInY', 'fadeInUp', 'bounceInLeft', 'backInDown'];
+      var c = document.getElementById('content');
+      c.classList.add(aniStyles[Math.floor(Math.random() * aniStyles.length)]);
+      if (!nativeEmoji()) twemoji.parse(document.getElementById('emoji'));
     });
   </script>
 </body>
